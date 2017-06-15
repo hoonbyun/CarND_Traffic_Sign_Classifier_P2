@@ -19,9 +19,9 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./examples/visualization.jpg "Visualization"
-[image2]: ./examples/grayscale.jpg "Grayscaling"
-[image3]: ./examples/random_noise.jpg "Random Noise"
+[image1]: ./traffic_sign/data_distrib.PNG "Visualization"
+[image2]: ./traffic_sign/x_train_norm.PNG "Grayscaling"
+[image3]: ./traffic_sign/x_train.PNG "Random Noise"
 [image4]: ./traffic_sign/traffic_sign_01.jpg "Traffic Sign 1"
 [image5]: ./traffic_sign/traffic_sign_02.jpg "Traffic Sign 2"
 [image6]: ./traffic_sign/traffic_sign_03.jpg "Traffic Sign 3"
@@ -53,31 +53,28 @@ signs data set:
 
 ####2. Include an exploratory visualization of the dataset.
 
-Here is an exploratory visualization of the data set. It is a bar chart showing how the data ...
-
-![alt text][image1]
+Here is an exploratory visualization of the data set. It is a bar chart showing how the train data histogram, I noticed that the bins or the number of data for each label is not well distributed, so I generate more data samples by duplicating them for the labels having fewer samples than other.
+![Train data histogram, before/after][image1]
 
 ###Design and Test a Model Architecture
 
 ####1. Describe how you preprocessed the image data. What techniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, and provide example images of the additional data. Then describe the characteristics of the augmented training set like number of images in the set, number of images for each class, etc.)
 
-As a first step, I decided to convert the images to grayscale because ...
+As a first step, I decided to resize the images to 32x32x1 from 32x32x3 to convert it to gray scale and then normalize the image.
+Here is an example of a traffic sign image before and after grayscaling and normalization.
+![gray and nrom][image2]
 
-Here is an example of a traffic sign image before and after grayscaling.
+As a last step, I normalized the image data because the zero mean data is required for the input of the model.
+I decided to generate additional train data since I noticed that the bins or the number of data for each label is not well distributed, so I generate more data samples by duplicating them for the labels having fewer samples than other, in that way the model will be well trained for all labels or avoid to be overfitting for some specific labels only.
 
-![alt text][image2]
-
-As a last step, I normalized the image data because ...
-
-I decided to generate additional data because ... 
-
-To add more data to the the data set, I used the following techniques because ... 
+To add more data to the the data set, I look at the number of sample per label coming out of the histogram plot output and applied a threshold to the normalized number of samples to generate by duplicating existing data.
 
 Here is an example of an original image and an augmented image:
+![Original image][image3]
 
-![alt text][image3]
-
-The difference between the original data set and the augmented data set is the following ... 
+The difference between the original data set and the augmented data set is the following
+Original train data size is 34799
+Updated train data size is 61526
 
 
 ####2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
@@ -86,15 +83,21 @@ My final model consisted of the following layers:
 
 | Layer         		|     Description	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| Input         		| 32x32x3 RGB image   							| 
-| Convolution 3x3     	| 1x1 stride, same padding, outputs 32x32x64 	|
-| RELU					|												|
-| Max pooling	      	| 2x2 stride,  outputs 16x16x64 				|
-| Convolution 3x3	    | etc.      									|
-| Fully connected		| etc.        									|
+| Input         		| 32x32x1 gray image   							| 
+| Convolution 3x3     	| 1x1 stride, same padding, outputs 28x28x6 	|
+| RELU					|	Acticvation		|
+| Max pooling	      	| 2x2 stride,  outputs 14x14x6 				|
+| Convolution 3x3	    | 1x1 stride, same padding, outputs 10x10x16	|
+| RELU					|	Acticvation		|
+| Max pooling	      	| 2x2 stride,  outputs 10x10x16 				|
+| Flatten    	| output 400 				|
+| Fully connected		| output 120   		|
+| RELU					|	Acticvation		|
+| Dropout					|	Dropout		|
+| Fully connected		| output 84   		|
+| RELU					|	Acticvation		|
+| Fully connected		| output 43   		|
 | Softmax				| etc.        									|
-|						|												|
-|						|												|
  
 
 
