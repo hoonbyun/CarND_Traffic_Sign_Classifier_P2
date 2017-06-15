@@ -54,6 +54,7 @@ signs data set:
 ####2. Include an exploratory visualization of the dataset.
 
 Here is an exploratory visualization of the data set. It is a bar chart showing how the train data histogram, I noticed that the bins or the number of data for each label is not well distributed, so I generate more data samples by duplicating them for the labels having fewer samples than other.
+
 ![Train data histogram, before/after][image1]
 
 ###Design and Test a Model Architecture
@@ -62,6 +63,7 @@ Here is an exploratory visualization of the data set. It is a bar chart showing 
 
 As a first step, I decided to resize the images to 32x32x1 from 32x32x3 to convert it to gray scale and then normalize the image.
 Here is an example of a traffic sign image before and after grayscaling and normalization.
+
 ![gray and nrom][image2]
 
 As a last step, I normalized the image data because the zero mean data is required for the input of the model.
@@ -70,6 +72,7 @@ I decided to generate additional train data since I noticed that the bins or the
 To add more data to the the data set, I look at the number of sample per label coming out of the histogram plot output and applied a threshold to the normalized number of samples to generate by duplicating existing data.
 
 Here is an example of an original image and an augmented image:
+
 ![Original image][image3]
 
 The difference between the original data set and the augmented data set is the following
@@ -97,7 +100,8 @@ My final model consisted of the following layers:
 | Fully connected		| output 84   		|
 | RELU					|	Acticvation		|
 | Fully connected		| output 43   		|
-| Softmax				| etc.        									|
+| Softmax			|         									|
+| Cross entropy		|             	 |
  
 
 
