@@ -19,7 +19,7 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./traffic_sign/data_distrib.PNG "Visualization"
+[image1]: ./traffic_sign/data_distrib.PNG "Visual"
 [image2]: ./traffic_sign/x_train_norm.PNG "Grayscaling"
 [image3]: ./traffic_sign/x_train.PNG "Random Noise"
 [image4]: ./traffic_sign/traffic_sign_01.jpg "Traffic Sign 1"
@@ -144,11 +144,12 @@ If a well known architecture was chosen:
 
 Here are five German traffic signs that I found on the web:
 
-![alt text][image4] 
-![alt text][image5] 
-![alt text][image6] 
-![alt text][image7] 
-![alt text][image8]
+ <img src="./traffic_sign/traffic_sign_01.jpg" width="150"/>
+ <img src="./traffic_sign/traffic_sign_02.jpg" width="150"/>
+ <img src="./traffic_sign/traffic_sign_03.jpg" width="150"/>
+ <img src="./traffic_sign/traffic_sign_04.jpg" width="150"/>
+ <img src="./traffic_sign/traffic_sign_05.jpg" width="150"/>
+ <img src="./traffic_sign/traffic_sign_06.jpg" width="150"/>
 
 The first image might be difficult to classify because ...
 
@@ -169,22 +170,25 @@ The model was able to correctly guess 5 of the 6 traffic signs, which gives an a
 
 ####3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
-The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
-
 Top 5 softmax result, image:0 label:1.0
 TopKV2(values=array([[ 0.98220634,  0.0096279 ,  0.00430604,  0.00142936,  0.00125175]], dtype=float32), indices=array([[ 1,  0, 13, 35,  4]]))
+
 Top 5 softmax result, image:1 label:31.0
 TopKV2(values=array([[  9.99999762e-01,   1.94290564e-07,   8.44103809e-09,
           5.60107472e-09,   3.11846082e-09]], dtype=float32), indices=array([[31, 27, 18, 24, 25]]))
+          
 Top 5 softmax result, image:2 label:18.0
 TopKV2(values=array([[  1.00000000e+00,   1.52296003e-12,   4.00296929e-13,
           1.13471628e-19,   4.94858283e-24]], dtype=float32), indices=array([[18, 11, 27, 26, 24]]))
+          
 Top 5 softmax result, image:3 label:22.0
 TopKV2(values=array([[  1.00000000e+00,   9.77921520e-13,   1.82035830e-15,
           4.58481530e-17,   7.03200797e-18]], dtype=float32), indices=array([[22, 17, 29, 31, 23]]))
+          
 Top 5 softmax result, image:4 label:13.0
 TopKV2(values=array([[  1.00000000e+00,   7.61624236e-11,   1.08096197e-13,
           1.14891251e-17,   1.52724890e-18]], dtype=float32), indices=array([[13, 34, 35,  9, 40]]))
+          
 Top 5 softmax result, image:5 label:2.0
 TopKV2(values=array([[ 0.7386049 ,  0.15407118,  0.09871594,  0.00172752,  0.00152657]], dtype=float32), indices=array([[20, 40, 10, 31, 18]]))
 
