@@ -107,14 +107,21 @@ My final model consisted of the following layers:
 
 ####3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
 
-To train the model, I used an ....
+To train the model, I used those parameters below
+* EPOCHS = 10
+* BATCH_SIZE = 128
+* LEARN_RATE = 0.001
+* KEEP_PROB = 0.5
 
 ####4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
+The importanct thing which took me long time to figure out is that the KEEP_PROB for the dropout should be applied only for the training not for the validation otherwise I'd get lower validation accuracy from the trained model.
+Another thing which also helps to get better validation accuracy is to generate more test data by looking at the histogram plot.
+The small learning rate is also a key point to get converge into the right place for the network model.
 
 My final model results were:
-* training set accuracy of ?
-* validation set accuracy of ? 
-* test set accuracy of ?
+* training set accuracy of, I didn' run the training set since it was not recommened in the class
+* validation set accuracy of 0.944
+* test set accuracy of ? 9.25
 
 If an iterative approach was chosen:
 * What was the first architecture that was tried and why was it chosen?
@@ -128,6 +135,8 @@ If a well known architecture was chosen:
 * Why did you believe it would be relevant to the traffic sign application?
 * How does the final model's accuracy on the training, validation and test set provide evidence that the model is working well?
  
+ My model is based on the LeNet acchitecture by adapting the number of classes of the traffic sign.
+ I picked up the LeNet architecture since its input expects to be an image and it has all necessary code cells, convolution, activation, pooling ect, and it looks very suit for the traffic sign classifier. 
 
 ###Test a Model on New Images
 
@@ -135,8 +144,11 @@ If a well known architecture was chosen:
 
 Here are five German traffic signs that I found on the web:
 
-![alt text][image4] ![alt text][image5] ![alt text][image6] 
-![alt text][image7] ![alt text][image8]
+![alt text][image4] 
+![alt text][image5] 
+![alt text][image6] 
+![alt text][image7] 
+![alt text][image8]
 
 The first image might be difficult to classify because ...
 
@@ -146,31 +158,35 @@ Here are the results of the prediction:
 
 | Image			        |     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| Stop Sign      		| Stop sign   									| 
-| U-turn     			| U-turn 										|
-| Yield					| Yield											|
-| 100 km/h	      		| Bumpy Road					 				|
-| Slippery Road			| Slippery Road      							|
+| Speed limit (30km/h)      		| Speed limit (30km/h)  									| 
+| Wild animals crossing    			| Wild animals crossing										|
+| General caution				| General caution											|
+| Bumpy road      		| Bumpy Road					 				|
+| Yield		| Yield     							|
+| Speed limit (50km/h) | Dangerous curve to the right |
 
-
-The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This compares favorably to the accuracy on the test set of ...
+The model was able to correctly guess 5 of the 6 traffic signs, which gives an accuracy of 83.3%. 
 
 ####3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
 The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
 
-For the first image, the model is relatively sure that this is a stop sign (probability of 0.6), and the image does contain a stop sign. The top five soft max probabilities were
-
-| Probability         	|     Prediction	        					| 
-|:---------------------:|:---------------------------------------------:| 
-| .60         			| Stop sign   									| 
-| .20     				| U-turn 										|
-| .05					| Yield											|
-| .04	      			| Bumpy Road					 				|
-| .01				    | Slippery Road      							|
-
-
-For the second image ... 
+Top 5 softmax result, image:0 label:1.0
+TopKV2(values=array([[ 0.98220634,  0.0096279 ,  0.00430604,  0.00142936,  0.00125175]], dtype=float32), indices=array([[ 1,  0, 13, 35,  4]]))
+Top 5 softmax result, image:1 label:31.0
+TopKV2(values=array([[  9.99999762e-01,   1.94290564e-07,   8.44103809e-09,
+          5.60107472e-09,   3.11846082e-09]], dtype=float32), indices=array([[31, 27, 18, 24, 25]]))
+Top 5 softmax result, image:2 label:18.0
+TopKV2(values=array([[  1.00000000e+00,   1.52296003e-12,   4.00296929e-13,
+          1.13471628e-19,   4.94858283e-24]], dtype=float32), indices=array([[18, 11, 27, 26, 24]]))
+Top 5 softmax result, image:3 label:22.0
+TopKV2(values=array([[  1.00000000e+00,   9.77921520e-13,   1.82035830e-15,
+          4.58481530e-17,   7.03200797e-18]], dtype=float32), indices=array([[22, 17, 29, 31, 23]]))
+Top 5 softmax result, image:4 label:13.0
+TopKV2(values=array([[  1.00000000e+00,   7.61624236e-11,   1.08096197e-13,
+          1.14891251e-17,   1.52724890e-18]], dtype=float32), indices=array([[13, 34, 35,  9, 40]]))
+Top 5 softmax result, image:5 label:2.0
+TopKV2(values=array([[ 0.7386049 ,  0.15407118,  0.09871594,  0.00172752,  0.00152657]], dtype=float32), indices=array([[20, 40, 10, 31, 18]]))
 
 ### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
 ####1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
