@@ -57,10 +57,12 @@ signs data set:
 Here is an exploratory visualization of the data set. It is a bar chart showing how the train data histogram, I noticed that the bins or the number of data for each label is not well distributed, so I generate more data samples by duplicating them for the labels having fewer samples than other.
 
 Data visualizaiton
-![Train data histogram, before/after][image0]
+
+![image0]
 
 Train data before and after the preprocess
-![Train data histogram, before/after][image1]
+
+![image1]
 
 ###Design and Test a Model Architecture
 
