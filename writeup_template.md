@@ -19,7 +19,8 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./traffic_sign/data_distrib.PNG "Visual"
+[image0]: ./traffic_sign/data_visual.PNG "Visual"
+[image1]: ./traffic_sign/data_distrib.PNG "Dist"
 [image2]: ./traffic_sign/x_train_norm.PNG "Grayscaling"
 [image3]: ./traffic_sign/x_train.PNG "Random Noise"
 [image4]: ./traffic_sign/traffic_sign_01.jpg "Traffic Sign 1"
@@ -55,6 +56,10 @@ signs data set:
 
 Here is an exploratory visualization of the data set. It is a bar chart showing how the train data histogram, I noticed that the bins or the number of data for each label is not well distributed, so I generate more data samples by duplicating them for the labels having fewer samples than other.
 
+Data visualizaiton
+![Train data histogram, before/after][image0]
+
+Train data before and after the preprocess
 ![Train data histogram, before/after][image1]
 
 ###Design and Test a Model Architecture
@@ -143,6 +148,7 @@ If a well known architecture was chosen:
 ####1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
 
 Here are five German traffic signs that I found on the web:
+I tried to pick up vivid images in color to ease the classificatoin for the model, but the size is different so I had to resize them into 32x32x1 for the gray scale, I also noticed that the weakness in my model is to classify the numbers for the speed limit so I added some speed limit signs as well.
 
  <img src="./traffic_sign/traffic_sign_01.jpg" width="150"/>
  <img src="./traffic_sign/traffic_sign_02.jpg" width="150"/>
@@ -150,8 +156,6 @@ Here are five German traffic signs that I found on the web:
  <img src="./traffic_sign/traffic_sign_04.jpg" width="150"/>
  <img src="./traffic_sign/traffic_sign_05.jpg" width="150"/>
  <img src="./traffic_sign/traffic_sign_06.jpg" width="150"/>
-
-The first image might be difficult to classify because ...
 
 ####2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
@@ -166,7 +170,8 @@ Here are the results of the prediction:
 | Yield		| Yield     							|
 | Speed limit (50km/h) | Dangerous curve to the right |
 
-The model was able to correctly guess 5 of the 6 traffic signs, which gives an accuracy of 83.3%. 
+The model was able to correctly guess 5 of the 6 traffic signs, which gives an accuracy of 83.3%.
+The accuracy with the additional traffic signs is lower than the test data accuracy which is 92.5% but the sample size of the new images is only 6, so If I test more samples, the accuracy would be getting closer, as expected my model failed one of the speed signs, the 50 km speed limit sign is detected as Dangerous curve to the right which is very irrelative, I guess the numbers or letters seem more challenge for the model for the traffic sign since the size of the letters become shrinked after resizing them, in overall my model did goog job on the new images.
 
 ####3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
